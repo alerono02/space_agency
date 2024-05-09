@@ -1,0 +1,121 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Космическое агенство</title>
+    <link rel="stylesheet" href="{% static 'slick/slick.css' %}"/>
+    <link rel="stylesheet" href="{% static 'slick/slick-theme.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
+    <style>
+        .slider-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .slider-for {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        .slider-nav {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+        }
+        .slider-nav .slick-slide {
+            width: 25%;
+            cursor: pointer;
+        }
+        .slider-nav .slick-slide img {
+            width: 100%;
+            height: auto;
+        }
+        .slider-for .slick-slide {
+            width: 100%;
+            height: 50vh;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .slider-for .slick-slide img {
+            display: none;
+        }
+    </style>
+</head>
+<body style="font-family: 'Montserrat'">
+<nav class=" navbar navbar-dark navbar-expand-lg px-2 py-3" style="background-color: #0A121E">
+    <div class="container d-lg-flex">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navcol-1"
+                aria-controls="navcol-1" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand me-auto"  href="#">
+            <img src="{% static 'img/logo.png' %}" alt="logo">
+        </a>
+        <div class="collapse navbar-collapse justify-content-center me-5 pe-5" id="navcol-1">
+            <ul class="navbar-nav fw-bolder text-center" style="font-size: 16px">
+                <li class="nav-item px-1">
+                    <a class="nav-link active" aria-current="page" href="#">ПРЕИМУЩЕСТВА</a>
+                </li>
+                <li class="nav-item px-1">
+                    <a class="nav-link active" href="#">ФОТОГРАФИИ</a>
+                </li>
+            </ul>
+        </div>
+        <button type="button" class="btn btn-danger fw-bolder">ВХОД</button>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="slider-container">
+                <div class="slider-for">
+                    {% for image in slider_images %}
+                    <div style="background-image: url('{{ image.image.url }}');"></div>
+                    {% endfor %}
+                </div>
+                <div class="slider-nav">
+                    {% for image in slider_images %}
+                    <div>
+                        <img src="{{ image.image.url }}" alt="{{ image.title }}">
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+      $('.slider-for').slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+          fade: true,
+          asNavFor: '.slider-nav'
+        });
+        $('.slider-nav').slick({
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          asNavFor: '.slider-for',
+          dots: true,
+          centerMode: true,
+          focusOnSelect: true
+        });
+    });
+</script>
+
+</body>
+</html>
