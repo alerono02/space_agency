@@ -1,4 +1,4 @@
-{% load static %}
+{% load static thumbnail %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,114 +8,224 @@
     <link rel="stylesheet" href="{% static 'slick/slick-theme.css' %}"/>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,700" rel="stylesheet">
-    <style>
-        .slider-container {
-            position: relative;
-            overflow: hidden;
-        }
-        .slider-for {
-            width: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
-        }
-        .slider-nav {
-            width: 100%;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            z-index: 2;
-            display: flex;
-            justify-content: center;
-        }
-        .slider-nav .slick-slide {
-            width: 25%;
-            cursor: pointer;
-        }
-        .slider-nav .slick-slide img {
-            width: 100%;
-            height: auto;
-        }
-        .slider-for .slick-slide {
-            width: 100%;
-            height: 50vh;
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
-        }
-        .slider-for .slick-slide img {
-            display: none;
-        }
-    </style>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body style="font-family: 'Montserrat'">
 <nav class=" navbar navbar-dark navbar-expand-lg px-2 py-3" style="background-color: #0A121E">
     <div class="container d-lg-flex">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navcol-1"
-                aria-controls="navcol-1" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <button class="navbar-toggler me-3 custom-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#menuItems"
+                aria-controls="menuItems" aria-expanded="false" aria-label="Toggle Navigation">
+            <span class="navbar-toggler-icon">
+                <i class="fas fa-bars" style="color:#FF342B; font-size:28px;"></i>
+            </span>
         </button>
-        <a class="navbar-brand me-auto"  href="#">
+        <a class="navbar-brand me-auto" href="#">
             <img src="{% static 'img/logo.png' %}" alt="logo">
         </a>
-        <div class="collapse navbar-collapse justify-content-center me-5 pe-5" id="navcol-1">
-            <ul class="navbar-nav fw-bolder text-center" style="font-size: 16px">
+        <div class="navbar-collapse collapse justify-content-center mx-auto pe-auto" id="menuItems">
+            <ul class="navbar-nav fw-bolder text-left" style="font-size: 16px">
                 <li class="nav-item px-1">
-                    <a class="nav-link active" aria-current="page" href="#">ПРЕИМУЩЕСТВА</a>
+                    <a class="nav-link active" aria-current="page" href="#plusesArea">ПРЕИМУЩЕСТВА</a>
                 </li>
                 <li class="nav-item px-1">
-                    <a class="nav-link active" href="#">ФОТОГРАФИИ</a>
+                    <a class="nav-link active" href="#photoArea">ФОТОГРАФИИ</a>
                 </li>
             </ul>
         </div>
-        <button type="button" class="btn btn-danger fw-bolder">ВХОД</button>
+        <button type="button" class="btn btn-danger fw-bolder d-flex justify-content-end"
+                style="background-color: #FF342B">
+            ВХОД
+        </button>
     </div>
 </nav>
-<div class="container">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="slider-container">
-                <div class="slider-for">
-                    {% for image in slider_images %}
-                    <div style="background-image: url('{{ image.image.url }}');"></div>
-                    {% endfor %}
-                </div>
-                <div class="slider-nav">
-                    {% for image in slider_images %}
-                    <div>
-                        <img src="{{ image.image.url }}" alt="{{ image.title }}">
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+        <div class="col-lg-8 col-md-8 mx-auto">
+            <h1 class="fw-bold mb-5" style="font-size: 56px">Космическое агенство</h1>
+            <p class="lead text-muted" style="font-size: 18px; font-weight: 400">Национальное управление по
+                аэронавтике
+                и исследованию космического пространства —
+                ведомство, относящееся к федеральному правительству США и подчиняющееся непосредственно президенту
+                США.</p>
+        </div>
+    </div>
+</section>
+<div class="container" style="font-size: 14px">
+    <section class="mb-5" id="plusesArea">
+        <div class="row">
+            <div class="col-lg-6 mt-2">
+                <div class="row d-flex justify-content-start">
+                    <div class="col-6 col-sm-6 my-5">
+                        <div class="card border-0">
+                            <div class="d-flex justify-content-center">
+                                <img src="{% static 'img/icon_1.svg' %}" class="card-icon">
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text text-center">Спейс шаттлы —пилотируемые корабли</p>
+                            </div>
+                        </div>
                     </div>
-                    {% endfor %}
+                    <div class="col-6 col-sm-6 my-5">
+                        <div class="card border-0">
+                            <div class="d-flex justify-content-center">
+                                <img src="{% static 'img/icon_2.svg' %}" class="card-icon">
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text text-center">Лучшее телескопическое оборудование</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-start">
+                    <div class="col-6 col-sm-6 my-5">
+                        <div class="card border-0">
+                            <div class="d-flex justify-content-center">
+                                <img src="{% static 'img/icon_3.svg' %}" class="card-icon">
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text text-center">Целимся на Луну <br/>и Марс</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 col-sm-6 my-5">
+                        <div class="card border-0">
+                            <div class="d-flex justify-content-center">
+                                <img src="{% static 'img/icon_4.svg' %}" class="card-icon">
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text text-center">Золотая медаль <br/> по научным исследованиям</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-sm-12 d-flex justify-content-end">
+                <img src="{% static 'img/photo.png' %}">
+            </div>
+        </div>
+    </section>
+</div>
+<!--<div class="row bg-dark" id="photoArea">-->
+<div class="py-5" style="background-color: #3C3C3C" id="photoArea">
+    <div class="price-header mx-5 my-5">
+        <h2 class="text-white text-center fw-bolder">Фотографии</h2>
+    </div>
+    <div class="col-12">
+        <div class="container">
+
+            <div class="slider slider-for my-5">
+                {% for image in slider_images %}
+                <div>
+                    <img src="{% thumbnail image.image 750x420 crop='smart' %}"
+                         class="btn round border-dark-1 mx-auto d-block shadow-lg"
+                         alt="{{ image.title }}" data-bs-toggle="modal" data-bs-target="#fullscreenImage">
+                </div>
+                {% endfor %}
+            </div>
+            <div class="modal fade show" id="fullscreenImage" tabindex="-1"
+                 aria-labelledby="fullscreenImageLabel"
+                 aria-hidden="true" style="background-color: #3C3C3C">
+                <div class="modal-dialog modal-fullscreen">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <!-- w-100 class so that header
+                        div covers 100% width of parent div -->
+                            <button type="button" class="btn-close"
+                                    data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <!--Modal body with image-->
+                        <div class="modal-body">
+                            <div class="slider one-time">
+                                {% for image in slider_images %}
+                                <div>
+                                    <img src="{{ image.image.url }}"/>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn"
+                                    data-bs-dismiss="modal">
+                                Close
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <div class="slider slider-nav justify-content-center">
+            {% for image in slider_images %}
+            <div>
+                <img src="{% thumbnail image.image 165x165 crop='smart' %}" class="round"
+                     alt="{{ image.title }}">
+            </div>
+            {% endfor %}
+        </div>
     </div>
 </div>
+</div>
+
 
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script type="text/javascript" src="{% static 'slick/slick.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 
 <script type="text/javascript">
     $(document).ready(function(){
-      $('.slider-for').slick({
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-          fade: true,
-          asNavFor: '.slider-nav'
-        });
-        $('.slider-nav').slick({
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          asNavFor: '.slider-for',
-          dots: true,
-          centerMode: true,
-          focusOnSelect: true
-        });
+    $('.slider-for').slick({
+     infinite: true,
+     slidesToShow: 1,
+     slidesToScroll: 1,
+     arrows: false,
+     fade: true,
+     asNavFor: '.slider-nav, .one-time'
     });
+    $('.slider-nav').slick({
+     infinite: true,
+     slidesToShow: 5,
+     slidesToScroll: 1,
+     asNavFor: '.slider-for, .one-time',
+     centerMode: true,
+     focusOnSelect: true
+    });
+    $('.one-time').slick({
+      infinite: true,
+      speed: 300,
+      slidesToShow: 1,
+      adaptiveHeight: true,
+      asNavFor: '.slider-for, .slider-nav'
+    });
+});
+
 </script>
 
 </body>
 </html>
+
+<!--responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 5
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            arrows: false,
+            centerMode: true,
+            centerPadding: '40px',
+            slidesToShow: 1
+          }
+        }
+      ]-->

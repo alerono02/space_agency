@@ -1,0 +1,35 @@
+.custom-toggler.navbar-toggler {
+    border: none;
+}
+/* Setting the stroke to green using rgb values (0, 128, 0) */
+
+.custom-toggler .navbar-toggler-icon {
+    background-image: url(
+"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 52, 43, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+#fixedButton {
+  position: absolute;
+  right: 1rem;
+  top: 0.5rem;
+  z-index: 1000;
+}
+ .card-icon {
+    width: 64px;
+    height: 64px;
+    object-fit: cover;
+ }
+ .round {
+    border-radius: 40px;
+ }
+
+ .modal{
+  position: fixed;
+  width: 200px;
+  height: 200px;
+  top: calc(50% - 100px);
+  left: calc(50% - 100px);
+  background: #cda;
+}
+.wrapper{
+  transform: translateY(-100px);
+}
