@@ -7,6 +7,7 @@
     background-image: url(
 "data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 52, 43, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
+
 #fixedButton {
   position: absolute;
   right: 1rem;
@@ -18,18 +19,143 @@
     height: 64px;
     object-fit: cover;
  }
+
  .round {
     border-radius: 40px;
  }
 
- .modal{
-  position: fixed;
-  width: 200px;
-  height: 200px;
-  top: calc(50% - 100px);
-  left: calc(50% - 100px);
-  background: #cda;
+ .slick-prev, .slick-next {
+  position: absolute;
+  top: 50%;
+  margin-top: 0px;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  font-size: 0;
+  &:before {
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    content: "";
+    display: block;
+    height: 60px;
+    opacity: 1;
+    width: 30px;
+  }
+  &:hover:before {
+    opacity: .8;
+  }
 }
-.wrapper{
-  transform: translateY(-100px);
+
+.slick-prev {
+  &:before {
+    background-image: url("../img/Vector_prev.svg");
+  }
+}
+
+.slick-next {
+  &:before {
+    background-image: url("../img/Vector_next.svg");
+  }
+}
+
+.modal[data-modal-color] {
+  color: #fff;
+}
+
+.modal .modal-header {
+  padding: 23px 26px;
+  border-bottom: 0px solid transparent;
+}
+
+.modal .modal-content {
+  box-shadow: 0;
+  border-radius: 0px;
+  border: 0;
+}
+
+.modal-footer {
+  padding: 15px;
+  text-align: right;
+  border-top: 0px solid transparent;
+}
+
+.modal[data-modal-color] .modal-footer {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.modal[data-modal-color] .modal-footer .btn-link {
+  font-weight: 400;
+}
+
+.modal[data-modal-color] .modal-title, .modal[data-modal-color] .modal-footer .btn-link {
+  color: #fff;
+}
+
+.modal .modal-footer .btn-link {
+  font-size: 14px;
+  color: #000;
+  font-weight: 500;
+}
+
+.btn-link {
+  color: #797979;
+  text-decoration: none;
+  border-radius: 2px;
+}
+
+.modal[data-modal-color] .modal-footer .btn-link:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  text-decoration:none;
+}
+
+.modal[data-modal-color] .modal-footer .btn-link {
+  font-weight: 400;
+}
+
+/* ========== MODAL COLORS ===============================*/
+.modal[data-modal-color="blue"] .modal-content {
+  background: #2196f3;
+}
+
+.modal[data-modal-color="lightblue"] .modal-content {
+  background: #03a9f4;
+}
+
+.modal[data-modal-color="cyan"] .modal-content {
+  background: #00bcd4;
+}
+
+.modal[data-modal-color="green"] .modal-content {
+  background: #4caf50;
+}
+
+.modal[data-modal-color="lightgreen"] .modal-content {
+  background: #8bc34a;
+}
+
+.modal[data-modal-color="red"] .modal-content {
+  background: #f44336;
+}
+
+.modal[data-modal-color="amber"] .modal-content {
+  background: #ffc107;
+}
+
+.modal[data-modal-color="orange"] .modal-content {
+  background: #ff9800;
+}
+
+.modal[data-modal-color="teal"] .modal-content {
+  background: #009688;
+}
+
+.modal[data-modal-color="bluegray"] .modal-content {
+  background: #607d8b;
+}
+
+.modal[data-modal-color="dark"] .modal-content {
+  background: #3C3C3C;
+}
+.modal[data-modal-color="0"] .modal-content {
+  background: transparent;
 }
