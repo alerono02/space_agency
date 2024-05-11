@@ -10,8 +10,8 @@
 ------------------------------------------------------------------------------------------------
 
 ## Технологии:
-- Python
-- Django
+- Python 3.9
+- Django 4.1
 - django-filer
 - mysqlclient
 - django-admin-sortable2 
