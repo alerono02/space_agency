@@ -27,18 +27,34 @@
 
 ### Подготовка
 - Загрузка зависимостей:
-> pip3 install -r req.pip
+```
+pip3 install -r req.pip
+```
+
+- Создайте .env и введите параметры базы данных MySQL на основе .env.example
+```python
+DB_USER=#"root"
+DB_PASSWORD=#"qwe123rt45"
+DB_NAME=#"space_agency"
+DB_HOST=#"localhost"
+DB_PORT=#"3306"
+```
 
 - Применяем миграции с помощью команды:
-> python3 manage.py migrate
+```
+python3 manage.py migrate
+```
 
 - Создаем админа кастомной командой:
-> python3 manage.py csu
-
+```
+python3 manage.py csu
+```
 
 ### Запуск
 - Запускаем проект с помощью команды:
-> python3 manage.py runserver 0.0.0.0:8000
+```
+python3 manage.py runserver 0.0.0.0:8000
+```
 
 ----------------------------------------------------------------
 
